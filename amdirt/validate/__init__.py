@@ -1,10 +1,13 @@
 from amdirt.validate.application import AMDirValidator
 import warnings
 
+import amdirt.configuration.configuration as config
+
 def run_validation(
     dataset,
     schema,
     schema_check,
+    local_json_schema,
     line_dup,
     columns,
     doi,
@@ -14,6 +17,9 @@ def run_validation(
     markdown,
     verbose,
 ):
+    if local_json_schema:
+        config.settings.update({"local_json_schema": local_json_schema})
+        
     if not verbose:
         warnings.filterwarnings("ignore")
     v = AMDirValidator(schema, dataset)
