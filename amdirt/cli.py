@@ -232,6 +232,12 @@ def convert(ctx, no_args_is_help=True, **kwargs):
     show_default=True,
 )
 @click.option(
+    "-t",
+    "--output_ena_table",
+    type=click.Path(writable=True),
+    help="path to ENA table output file",
+)
+@click.option(
     "-l",
     "--library_output",
     type=click.Path(writable=True),
