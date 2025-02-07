@@ -89,7 +89,7 @@ def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_o
     
     # Output ENA table to .csv.gz file
     if output_ena_table is not None:
-        ena_table_output_path = output_ena_table + '.tsv'
+        ena_table_output_path = output_ena_table
         logger.info(f"ENA Table head (First 5 lines + headers)")
         print(df_out.head(5))
         df_out.to_csv(ena_table_output_path, sep='\t', index=False)
