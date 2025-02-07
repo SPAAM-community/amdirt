@@ -7,7 +7,7 @@ import json
 import sys
 import pandas as pd
 
-def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_output=None, library_output=None, verbose=False, output_ena_table=False):
+def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_output=None, library_output=None, verbose=False, output_ena_table=None):
     """Autofill the metadata of a table from ENA
 
     Args:
@@ -86,13 +86,14 @@ def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_o
         ])
         query_dict += query_res
     df_out = pd.DataFrame.from_dict(query_dict)
-
+    
     # Output ENA table to .csv.gz file
-    if output_ena_table:
+    if output_ena_table is not None:
+        ena_table_output_path = output_ena_table + '.tsv.gz'
         logger.info(f"ENA Table head (First 5 lines + headers)")
         print(df_out.head(5))
-        logger.info(f"Saving table retrieved from ENA to ena_table.csv.gz")
-        df_out.to_csv('ena_table.tsv.gz', sep='\t', index=False, compression='gzip')
+        df_out.to_csv(ena_table_output_path, sep='\t', index=False, compression='gzip')
+        logger.info(f"Saved ENA table to {ena_table_output_path}")
         
     df_out.rename(
         columns={
