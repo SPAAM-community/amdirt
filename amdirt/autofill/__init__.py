@@ -92,7 +92,7 @@ def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_o
         logger.info(f"ENA Table head (First 5 lines + headers)")
         print(df_out.head(5))
         logger.info(f"Saving table retrieved from ENA to ena_table.csv.gz")
-        df_out.to_csv('ena_table.csv.gz', index=False, compression='gzip')
+        df_out.to_csv('ena_table.tsv.gz', sep='\t', index=False, compression='gzip')
         
     df_out.rename(
         columns={
