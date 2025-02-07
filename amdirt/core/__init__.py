@@ -341,23 +341,34 @@ def prepare_accession_table(
     #     supported_archives=supported_archives,
     # )
 
+    
     # Downloading with curl or aspera instead of fetchngs
-    urls = set(libraries["download_links"])
+    urls = []
     accessions = set(libraries["archive_data_accession"])
     links = set()
+    
+    for iter, row in libraries.iterrows():
+        urls.append((row["download_links"], row["download_md5s"]))
+    
     for u in urls:
-        for s in u.split(";"):
-            links.add(s)
+        l = u[0].split(";")
+        m = u[1].split(";")
+        
+        for i in range(len(l)):
+            links.add((l[i], m[i]))
+    
+    links = set(links)
+    
     dl_script_header = "#!/usr/bin/env bash\n"
     curl_script = (
-        "\n".join([f"curl -L ftp://{l} -o {l.split('/')[-1]}" for l in links]) + "\n"
+        "\n".join([f"curl -L ftp://{l[0]} -o {l[0].split('/')[-1]} && md5sum {l[0].split('/')[-1]} && md5sum {l[0].split('/')[-1]} | awk '{{print $1}}' | grep -q ^{l[1]}$ || echo -e \"\\e[31mMD5 hash do not match for {l[0].split('/')[-1]}. Expected hash: {l[1]}\\e[0m\"" for l in links]) + "\n"
     )
     aspera_script = (
         "\n".join(
             [
                 "ascp -QT -l 300m -P 33001 "
                 "-i ${ASPERA_PATH}/etc/asperaweb_id_dsa.openssh "
-                f"era-fasp@fasp.sra.ebi.ac.uk:{'/'.join(l.split('/')[1:])} ."
+                f"era-fasp@fasp.sra.ebi.ac.uk:{'/'.join(l[0].split('/')[1:])} ."
                 for l in links
             ]
         )
