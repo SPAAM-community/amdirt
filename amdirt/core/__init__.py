@@ -103,24 +103,29 @@ def check_allowed_values(ref: list, test: str):
 
 def get_colour_chemistry(instrument: str) -> int:
     """
-    Get number of colours used in sequencing chemistry
+    Get number of colours used in sequencing chemistry. If the instrument is
+    not a known Illumina sequencer with two-dye chemistry, a colour chemistry
+    of four dyes is assumed. 
+
     Args:
         instrument(str): Name of the instrument
     Returns:
         int: number of colours used in sequencing chemistry
     """
-    chemistry_colours = {
-        "bgiseq": 4,
-        "miseq": 4,
-        "hiseq": 4,
-        "genome analyzer": 4,
-        "nextseq": 2,
-        "novaseq": 2,
-    }
-
-    for k in chemistry_colours:
-        if k in instrument.lower():
-            return chemistry_colours[k]
+    instruments_2dye = [
+        "Illumina MiniSeq",
+        "Illumina NovaSeq 6000",
+        "Illumina NovaSeq X",
+        "Illumina iSeq 100",
+        "NextSeq 1000",
+        "NextSeq 2000",
+        "NextSeq 500",
+        "NextSeq 550",
+    ]
+    if instrument in instruments_2dye:
+        return 2
+    else:
+        return 4
 
 
 def doi2bib(doi: str) -> str:
