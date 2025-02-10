@@ -182,7 +182,7 @@ class DatasetValidator:
                 column_dtypes[column_keys] = coltype
         try:
             return pd.read_table(dataset, sep="\t", dtype=column_dtypes)
-        except (AttributeError, pd.errors.ParserError, ValueError) as e:
+        except (AttributeError, pd.errors.ParserError, ValueError, TypeError) as e:
             self.add_error(
                 DFError(
                     "Dataset Parsing Error",
