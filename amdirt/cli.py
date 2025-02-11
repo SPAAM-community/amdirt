@@ -92,6 +92,12 @@ def cli(ctx, verbose, no_args_is_help=True, **kwargs):
     default=None,
     help="[Optional] Path/URL to remote reference sample table for archive accession validation",
 )
+@click.option(
+    "-l",
+    "--local_json_schema",
+    type=click.Path(writable=True),
+    help="path to folder with local JSON schemas",
+)
 @click.option("-m", "--markdown", is_flag=True, help="Output is in markdown format")
 @click.pass_context
 def validate(ctx, no_args_is_help=True, **kwargs):
