@@ -19,11 +19,11 @@ def get_version(rel_path):
 
 
 setup(
-    name="AMDirT",
-    version=get_version("AMDirT/__init__.py"),
-    description="AMDirT: AncientMetagenomeDir Toolkit",
+    name="amdirt",
+    version=get_version("amdirt/__init__.py"),
+    description="amdirt: AncientMetagenomeDir Toolkit",
     long_description=open("README.md").read(),
-    url="https://github.com/SPAAM-community/AMDirT",
+    url="https://github.com/SPAAM-community/amdirt",
     long_description_content_type="text/markdown",
     license="GNU-GPLv3",
     python_requires=">=3.9",
@@ -33,14 +33,14 @@ setup(
         "tabulate",
         "jsonschema",
         "rich",
-        "streamlit",
+        "streamlit<=1.35.0",
         "streamlit-aggrid",
         "numpy",
         "requests",
         "colorlog"
     ],
     packages=find_packages(exclude="test"),
-    entry_points={"console_scripts": ["AMDirT = AMDirT.cli:cli"]},
-    package_dir={"AMDirT": "AMDirT"},
-    package_data={"AMDirT.assets": ["tables.json"]},
+    entry_points={"console_scripts": ["amdirt = amdirt.cli:cli"]},
+    package_dir={"amdirt": "amdirt"},
+    package_data={"amdirt.assets": ["tables.json"]},
 )

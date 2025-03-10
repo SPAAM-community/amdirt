@@ -1,8 +1,8 @@
-from AMDirT.validate.application import AMDirValidator
-from AMDirT.validate.exceptions import DatasetValidationError
+from amdirt.validate.application import AMDirValidator
+from amdirt.validate.exceptions import DatasetValidationError
 import warnings
 import pandas as pd
-from AMDirT.core import logger, get_remote_resources
+from amdirt.core import logger, get_remote_resources
 from os.path import join
 
 

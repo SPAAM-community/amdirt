@@ -19,7 +19,7 @@ The following description assumes you have already prepared an AncientMetagenome
 Given a new samples table `samples_for_new_pr.tsv` to be added to the single genome samples table `ancientsinglegenome-hostassociated`, you can run the following command:
 
 ```bash
-AMDirT merge -n ancientsinglegenome-hostassociated -t samples samples_for_new_pr.tsv
+amdirt merge -n ancientsinglegenome-hostassociated -t samples samples_for_new_pr.tsv
 ```
 
 Note that during merge `merge` will also perform schema validation to ensure the contents of the new rows are valid against the AncientMetagenomeDir schema.

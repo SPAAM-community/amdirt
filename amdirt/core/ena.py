@@ -1,5 +1,5 @@
 import requests
-from AMDirT.core import logger
+from amdirt.core import logger
 import os
 from typing import List, Dict
 

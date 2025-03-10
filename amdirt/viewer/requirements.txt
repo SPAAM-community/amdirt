@@ -8,4 +8,4 @@ streamlit
 watchdog
 streamlit-aggrid
 colorlog
-amdirt==1.4
+amdirt==1.6.2

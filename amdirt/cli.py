@@ -1,13 +1,13 @@
 import click
-from AMDirT import __version__
+from amdirt import __version__
 
-from AMDirT.validate import run_validation
-from AMDirT.viewer import run_app
-from AMDirT.convert import run_convert
-from AMDirT.core import get_json_path, get_amdir_tags, get_latest_tag
-from AMDirT.autofill import run_autofill
-from AMDirT.merge import merge_new_df
-from AMDirT.download import download as download_amdir
+from amdirt.validate import run_validation
+from amdirt.viewer import run_app
+from amdirt.convert import run_convert
+from amdirt.core import get_json_path, get_amdir_tags, get_latest_tag
+from amdirt.autofill import run_autofill
+from amdirt.merge import merge_new_df
+from amdirt.download import download as download_amdir
 from json import load
 
 
@@ -49,9 +49,9 @@ def get_table_list():
 @click.option("--verbose", is_flag=True, help="Verbose mode")
 def cli(ctx, verbose, no_args_is_help=True, **kwargs):
     """\b
-    AMDirT: Performs validity check of AncientMetagenomeDir datasets
-    Authors: AMDirT development team and the SPAAM community
-    Homepage & Documentation: https://github.com/SPAAM-community/AMDirT
+    amdirt: Performs validity check of AncientMetagenomeDir datasets
+    Authors: amdirt development team and the SPAAM community
+    Homepage & Documentation: https://github.com/SPAAM-community/amdirt
     \b
     """
     ctx.ensure_object(dict)
@@ -232,6 +232,12 @@ def convert(ctx, no_args_is_help=True, **kwargs):
     show_default=True,
 )
 @click.option(
+    "-t",
+    "--output_ena_table",
+    type=click.Path(writable=True),
+    help="path to ENA table output file",
+)
+@click.option(
     "-l",
     "--library_output",
     type=click.Path(writable=True),
@@ -330,7 +336,7 @@ def merge(ctx, no_args_is_help=True, **kwargs):
 )
 def download(no_args_is_help=True, **kwargs):
     """\b
-    Download a table from the AMDirT repository
+    Download a table from the amdirt repository
     """
     download_amdir(**kwargs)
 

@@ -1,4 +1,4 @@
-from AMDirT.core import (
+from amdirt.core import (
     logger,
     get_amdir_tags,
     get_remote_resources,
@@ -9,7 +9,7 @@ import requests
 
 def download(table: str, table_type: str, release: str, output: str = ".") -> str:
     """
-    Download a table from the AMDirT repository.
+    Download a table from the amdirt repository.
 
     Parameters
     ----------

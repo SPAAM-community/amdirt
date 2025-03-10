@@ -1,6 +1,4 @@
-import pytest
-
-from AMDirT.core import (
+from amdirt.core import (
     get_colour_chemistry,
     doi2bib,
     ena,
@@ -9,8 +7,8 @@ from AMDirT.core import (
 
 def test_get_colour_chemistry():
 
-    assert get_colour_chemistry("hiseq") == 4
-    assert get_colour_chemistry("novaseq") == 2
+    assert get_colour_chemistry("Illumina HiSeq 2500") == 4
+    assert get_colour_chemistry("Illumina NovaSeq 6000") == 2
 
 
 def test_doi2bib():

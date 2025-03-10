@@ -1,4 +1,3 @@
-from numpy import ALLOW_THREADS
 import streamlit as st
 import pandas as pd
 import os
@@ -7,8 +6,8 @@ import argparse
 import zipfile
 import json
 import os
-from AMDirT import __version__
-from AMDirT.core import (
+from amdirt import __version__
+from amdirt.core import (
     prepare_bibtex_file,
     prepare_eager_table,
     prepare_mag_table,
@@ -23,7 +22,7 @@ from AMDirT.core import (
 
 
 st.set_page_config(
-    page_title="AMDirT viewer",
+    page_title="amdirt viewer",
     page_icon="https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/assets/images/logos/spaam-AncientMetagenomeDir_logo_mini.png",
     layout="wide",
 )
@@ -69,7 +68,7 @@ with st.sidebar:
 """,
         unsafe_allow_html=True,
     )
-    st.write(f"# [AMDirT](https://github.com/SPAAM-community/AMDirT) viewer tool")
+    st.write(f"# [amdirt](https://github.com/SPAAM-community/amdirt) viewer tool")
     st.write(f"\n Version: {__version__}")
     st.session_state.tag_name = st.selectbox(
         label="Select an AncientMetagenomeDir release", options=tags

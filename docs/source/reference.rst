@@ -6,10 +6,10 @@ To access the help menu:
 
 .. code-block:: bash
 
-   $ AMDirT --help
+   $ amdirt --help
 
 The list of arguments of options is detailed below
 
-.. click:: AMDirT.cli:cli
-  :prog: AMDirT
+.. click:: amdirt.cli:cli
+  :prog: amdirt
   :nested: full

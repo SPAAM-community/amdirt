@@ -3,24 +3,24 @@
     "ancientmetagenome-environmental": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-environmental/samples/ancientmetagenome-environmental_samples.tsv",
     "ancientmetagenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-hostassociated/samples/ancientmetagenome-hostassociated_samples.tsv",
     "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/samples/ancientsinglegenome-hostassociated_samples.tsv",
-    "test": "https://raw.githubusercontent.com/SPAAM-community/AMDirT/dev/tests/data/valid.tsv"
+    "test": "https://raw.githubusercontent.com/SPAAM-community/amdirt/dev/tests/data/valid.tsv"
   },
   "samples_schema": {
     "ancientmetagenome-environmental": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-environmental/samples/ancientmetagenome-environmental_samples_schema.json",
     "ancientmetagenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-hostassociated/samples/ancientmetagenome-hostassociated_samples_schema.json",
     "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/samples/ancientsinglegenome-hostassociated_samples_schema.json",
-    "test": "https://raw.githubusercontent.com/SPAAM-community/AMDirT/dev/tests/data/schema.json"
+    "test": "https://raw.githubusercontent.com/SPAAM-community/amdirt/dev/tests/data/schema.json"
   },
   "libraries": {
     "ancientmetagenome-environmental": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-environmental/libraries/ancientmetagenome-environmental_libraries.tsv",
     "ancientmetagenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-hostassociated/libraries/ancientmetagenome-hostassociated_libraries.tsv",
     "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/libraries/ancientsinglegenome-hostassociated_libraries.tsv",
-    "test": "https://raw.githubusercontent.com/SPAAM-community/AMDirT/dev/tests/data/valid_libaries.tsv"
+    "test": "https://raw.githubusercontent.com/SPAAM-community/amdirt/dev/tests/data/valid_libaries.tsv"
   },
   "libraries_schema": {
     "ancientmetagenome-environmental": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-environmental/libraries/ancientmetagenome-environmental_libraries_schema.json",
     "ancientmetagenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-hostassociated/libraries/ancientmetagenome-hostassociated_libraries_schema.json",
     "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/libraries/ancientsinglegenome-hostassociated_libraries_schema.json",
-    "test": "https://raw.githubusercontent.com/SPAAM-community/AMDirT/dev/tests/data/libraries_schema.json"
+    "test": "https://raw.githubusercontent.com/SPAAM-community/amdirt/dev/tests/data/libraries_schema.json"
   }
 }

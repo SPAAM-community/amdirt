@@ -1,4 +1,4 @@
-from AMDirT.validate.application import AMDirValidator
+from amdirt.validate.application import AMDirValidator
 import warnings
 
 def run_validation(

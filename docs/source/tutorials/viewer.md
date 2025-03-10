@@ -1,6 +1,6 @@
 # viewer
 
-On this page we provide a step-by-step video tutorial on how to use the AMDirT graphical-user-interface (GUI) of the `viewer` command.
+On this page we provide a step-by-step video tutorial on how to use the amdirt graphical-user-interface (GUI) of the `viewer` command.
 
 For more detail about all possible output files, please see the corresponding pages on [How To](/how_to/index).
 

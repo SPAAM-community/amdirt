@@ -1,5 +1,5 @@
 import os
-from AMDirT.validate import AMDirValidator
+from amdirt.validate import AMDirValidator
 
 
 def test_project_multiple_doi(test_data_dir):

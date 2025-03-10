@@ -1,9 +1,8 @@
-import pytest
 from pathlib import Path
 import shutil
 import os
 
-from AMDirT.convert import run_convert
+from amdirt.convert import run_convert
 
 
 def test_convert_only_sample_df(test_data_dir):

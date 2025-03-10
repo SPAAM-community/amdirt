@@ -1,8 +1,7 @@
 import json
-from numpy import int64
 import pandas as pd
-from AMDirT.validate import exceptions
-from AMDirT.core import logger
+from amdirt.validate import exceptions
+from amdirt.core import logger
 from io import StringIO
 from pathlib import Path
 from rich.table import Table
@@ -183,7 +182,7 @@ class DatasetValidator:
                 column_dtypes[column_keys] = coltype
         try:
             return pd.read_table(dataset, sep="\t", dtype=column_dtypes)
-        except (AttributeError, pd.errors.ParserError, ValueError) as e:
+        except (AttributeError, pd.errors.ParserError, ValueError, TypeError) as e:
             self.add_error(
                 DFError(
                     "Dataset Parsing Error",
@@ -251,7 +250,7 @@ class DatasetValidator:
         err_column = list(error.path)[-1]
         if "enum" in error.schema:
             if len(error.schema["enum"]) > 3:
-                error.message = f"'{error.instance}' is not an accepted value.\nPlease check [link={self.schema['items']['properties'][err_column]['$ref']}]{self.schema['items']['properties'][err_column]['$ref']}[/link]"
+                error.message = f"'{error.instance}' is not an accepted value.\nPlease check {self.schema['items']['properties'][err_column]['$ref']}"
         err_line = str(error.path[0])
         return DFError(
             "Schema Validation Error",
@@ -292,7 +291,7 @@ class DatasetValidator:
         """
 
         table = Table(
-            title=f"AMDirT Validation Report of {self.dataset_name} against {self.schema_name}"
+            title=f"amdirt Validation Report of {self.dataset_name} against {self.schema_name}"
         )
         columns = ["Error", "Source", "Column", "Row", "Message"]
         for column in columns:

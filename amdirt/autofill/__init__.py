@@ -1,13 +1,13 @@
-from AMDirT.validate.domain import DatasetValidator
-from AMDirT.core import get_json_path, logger
-from AMDirT.core.ena import ENAPortalAPI
-from AMDirT.validate.exceptions import NetworkError
+from amdirt.validate.domain import DatasetValidator
+from amdirt.core import get_json_path, logger
+from amdirt.core.ena import ENAPortalAPI
+from amdirt.validate.exceptions import NetworkError
 import json
 
 import sys
 import pandas as pd
 
-def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_output=None, library_output=None, verbose=False):
+def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_output=None, library_output=None, verbose=False, output_ena_table=None):
     """Autofill the metadata of a table from ENA
 
     Args:
@@ -56,22 +56,45 @@ def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_o
     query_dict = list()
     for a in accession:
         query_res = ena.query(a, fields=[
+            "experiment_accession",
             "study_accession",
             "run_accession",
-            "secondary_sample_accession",
             "sample_alias",
+            "sample_accession",
+            "secondary_sample_accession",            
+            "nominal_length",
+            "scientific_name",
+            "sample_title",
+            "bam_ftp",
+            "sra_ftp",
             "fastq_ftp",
             "fastq_md5",
             "fastq_bytes",
-            "library_name",
+            "read_count",
+            "submitted_ftp",
+            "submitted_aspera",
+            "submitted_format",
+            "instrument_platform",
             "instrument_model",
+            "scientific_name",
+            "tax_id",
+            "library_name",
             "library_layout",
             "library_strategy",
-            "read_count",
+            "library_selection",
+            "library_source",
         ])
         query_dict += query_res
     df_out = pd.DataFrame.from_dict(query_dict)
-
+    
+    # Output ENA table to .csv.gz file
+    if output_ena_table is not None:
+        ena_table_output_path = output_ena_table
+        logger.info(f"ENA Table head (First 5 lines + headers)")
+        print(df_out.head(5))
+        df_out.to_csv(ena_table_output_path, sep='\t', index=False)
+        logger.info(f"Saved ENA table to {ena_table_output_path}")
+        
     df_out.rename(
         columns={
             "study_accession": "archive_project",

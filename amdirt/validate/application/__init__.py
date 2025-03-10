@@ -1,8 +1,8 @@
 from typing import Iterable, AnyStr, Union
-from AMDirT.validate.domain import DatasetValidator, DFError
-from AMDirT.core import get_json_path
-from AMDirT.core.diff import get_sample_diff
-from AMDirT.core.ena import ENAPortalAPI
+from amdirt.validate.domain import DatasetValidator, DFError
+from amdirt.core import get_json_path
+from amdirt.core.diff import get_sample_diff
+from amdirt.core.ena import ENAPortalAPI
 from rich.progress import track
 from pathlib import Path
 import pandas as pd
@@ -13,11 +13,15 @@ class AMDirValidator(DatasetValidator):
     """Validator Class for AncientMetagenomeDir datasets"""
 
     def check_duplicate_dois(self) -> bool:
+        if "publication_doi" in self.dataset:
+            doi_col = "publication_doi"
+        else:
+            doi_col = "data_publication_doi"
         project_dois = self.dataset.groupby("project_name")[
-            "publication_doi"
+            doi_col
         ].unique()
         doi_unique = self.dataset.groupby("project_name")[
-            "publication_doi"
+            doi_col
         ].nunique()
         err_cnt = 0
         for project in doi_unique.index:

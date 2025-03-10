@@ -14,11 +14,11 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath("../.."))
-from AMDirT import __version__
+from amdirt import __version__
 
 # -- Project information -----------------------------------------------------
 
-project = "AMDirT"
+project = "amdirt"
 copyright = "2022, Maxime Borry"
 author = "Maxime Borry, Jasmin Frangenberg, Nikolay Oskolov, & the SPAAM Community"
 

@@ -1,8 +1,8 @@
 # convert
 
-On this page we provide a brief tutorial on how you can use the AMDirT command-line-interface (CLI) of the `convert` command.
+On this page we provide a brief tutorial on how you can use the amdirt command-line-interface (CLI) of the `convert` command.
 
-This tutorial assumes you are on a UNIX based operating system and has internet access. It also assumes you have already installed `AMDirT`.
+This tutorial assumes you are on a UNIX based operating system and has internet access. It also assumes you have already installed `amdirt`.
 
 We will show how given a pre-filtered samples or libraries table (e.g. via command line tools or in an R session), in much the same way as the graphical-based `GUI` command, you can use the command-line interface to convert the table to various formats such as download scripts or prepared input sample sheets for ancient metagenomic pipelines.
 
@@ -15,7 +15,7 @@ We will take use one of the previous releases of AncientMetagenomeDir as an exam
 ```bash
 mkdir amdirt-convert-tutorial
 cd amdirt-convert-tutorial
-AMDirT download --table ancientmetagenome-hostassociated --table_type samples -r v23.09.0
+amdirt download --table ancientmetagenome-hostassociated --table_type samples -r v23.09.0
 ```
 
 ## Filter a sample metadata table
@@ -31,7 +31,7 @@ cat ancientmetagenome-hostassociated_samples_v23.09.0.tsv | grep -e '^project_na
 Now we can use the `convert` command to provide a download script, a nf-core/eager samplesheet, the AncientMetagenomeDir library metadata, and a citations file.
 
 ```bash
-AMDirT convert --curl --eager --librarymetadata --bibliography germany_dentalcalculus.tsv ancientmetagenome-hostassociated
+amdirt convert --curl --eager --librarymetadata --bibliography germany_dentalcalculus.tsv ancientmetagenome-hostassociated
 ```
 
 This will create the following files:
@@ -63,7 +63,7 @@ Let's say of the samples we just downloaded, you realised you only wanted to use
 We can then again use the `convert` command to provide an updated download script, nf-core/eager samplesheet, and an citations file.
 
 ```bash
-AMDirT convert --curl --eager --bibliography --libraries germany_dentalcalculus_libraries_pe.tsv germany_dentalcalculus.tsv ancientmetagenome-hostassociated
+amdirt convert --curl --eager --bibliography --libraries germany_dentalcalculus_libraries_pe.tsv germany_dentalcalculus.tsv ancientmetagenome-hostassociated
 ```
 
 > ℹ _It's important to note that you still need a (full or filtered) AncientMetagenomeDir samples sheet even when supplying `--libraries`_.

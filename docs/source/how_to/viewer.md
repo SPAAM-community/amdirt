@@ -22,12 +22,12 @@ You should use this tool when you wish to find particular types of ancient metag
 
 ### Loading the interface
 
-Before using `AMDirT viewer` make sure you have modern web-browser (Chrome, Firefox, Edge, Safari etc.) available on your machine. This will in most cases be your own laptop or desktop - not a server.
+Before using `amdirt viewer` make sure you have modern web-browser (Chrome, Firefox, Edge, Safari etc.) available on your machine. This will in most cases be your own laptop or desktop - not a server.
 
-To open the graphical user interface, open a terminal (activating software environments if necessary, see [AMDirT Installation Page](/README)) and run:
+To open the graphical user interface, open a terminal (activating software environments if necessary, see [amdirt Installation Page](/README)) and run:
 
 ```bash
-AMDirT viewer
+amdirt viewer
 ```
 
 Your web-browser should automatically open a new tab and have the `viewer` interface open for you. If your browser does not automatically open, just copy and paste one of the URLs present in the console in your web browsers URL bar.
@@ -39,15 +39,15 @@ Your web-browser should automatically open a new tab and have the `viewer` inter
 
 > ⚠️ _The first time you run the command, you first may get some prompts in your terminal. You can just say 'no' to all - this will not affect the usage of the tool._
 
-![AMDirT welcome page with sidebar](images/amdirt-filter-welcome.png)
+![amdirt welcome page with sidebar](images/amdirt-filter-welcome.png)
 
 Once opened you should see a side bar and a empty pane. You can use the side bar to select various aspects of the displayed data from the AncientMetagenomeDir tables, such as the release, which table you view (e.g., environmental or host-associated metagenomics) and the number of rows to display. The data download option controls which tool the resulting download script will use to get the data.
 
-![AMDirT side bar with version dropdown menu](images/amdirt-filter-version-select.png)
+![amdirt side bar with version dropdown menu](images/amdirt-filter-version-select.png)
 
-![AMDirT side bar with table dropdown menu](images/amdirt-filter-table-select.png)
+![amdirt side bar with table dropdown menu](images/amdirt-filter-table-select.png)
 
-![AMDirT side bar with download method menu](images/amdirt-filter-downloadmethod-select.png)
+![amdirt side bar with download method menu](images/amdirt-filter-downloadmethod-select.png)
 
 Once you have selected a version and a table, the table itself should open in the empty pane.
 
@@ -60,11 +60,11 @@ To navigate the tables you can scroll up and down with your mouse. To side scrol
 
 To filter the tables, hover your cursor over the column of interest and you should see a 'hamburger' icon, press this to open the filter and table formatting options.
 
-![AMDirT column configuration with row ordering options](images/amdirt-filter-column-order.png)
+![amdirt column configuration with row ordering options](images/amdirt-filter-column-order.png)
 
-![AMDirT column configuration with row filtering options](images/amdirt-filter-column-filter.png)
+![amdirt column configuration with row filtering options](images/amdirt-filter-column-filter.png)
 
-![AMDirT column configuration with column selection options](images/amdirt-filter-column-select.png)
+![amdirt column configuration with column selection options](images/amdirt-filter-column-select.png)
 
 With this pane and tabs you can:
 
@@ -80,9 +80,9 @@ Now, select all the samples you wish to download and/or analyse.
 
 You can select all samples currently displayed by clicking the empty box on the project_name column, or you can select individual samples by clicking the empty boxes on these rows in the project_name column.
 
-![AMDirT Selecting all samples currently in table](images/amdirt-filter-select-all.png)
+![amdirt Selecting all samples currently in table](images/amdirt-filter-select-all.png)
 
-![AMDirT Selecting individual samples from the current table](images/amdirt-filter-select-single-samples.png)
+![amdirt Selecting individual samples from the current table](images/amdirt-filter-select-single-samples.png)
 
 Now validate your selection! Press the 'Validate selection' button at the bottom of the table.
 
@@ -90,13 +90,13 @@ Now validate your selection! Press the 'Validate selection' button at the bottom
 
 Once the selection is validated, the library filtering table will appear below
 
-![AMDirT libraries filtering table](images/amdirt-filter-libraries-table.png)
+![amdirt libraries filtering table](images/amdirt-filter-libraries-table.png)
 
 You can proceed to select your libraries of choice (or all of them) in the same way as the samples table. Once happy, you can then click on 'Validate library selection'
 
 Your different download options will finally appear:
 
-![AMDirT output download options](images/amdirt-filter-download-buttons.png)
+![amdirt output download options](images/amdirt-filter-download-buttons.png)
 
 In this case we suggest you press:
 

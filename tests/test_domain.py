@@ -1,6 +1,6 @@
 import pytest
 import os
-from AMDirT.validate.domain import DatasetValidator, DFError
+from amdirt.validate.domain import DatasetValidator, DFError
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError as JSONValidationError
 

@@ -17,7 +17,7 @@ Before you run `validate`, you normally need a local copy of AncientMetagenomeDi
 To run, execute the following command:
 
 ```bash
-AMDirT validate ancientmetagenome-hostassociated_samples.tsv ancientmetagenome-hostassociated_samples_schema.json
+amdirt validate ancientmetagenome-hostassociated_samples.tsv ancientmetagenome-hostassociated_samples_schema.json
 ```
 
 With the `.tsv` file in the first positional argument, and the `.json` schema in the second position.
@@ -40,19 +40,19 @@ You can also change the output console formatting from a python-rich format (def
 For example, to check all columns are present, there are no duplicate lines, and the table matches the schema you can run
 
 ```bash
-AMDirT validate -s -d ancientmetagenome-hostassociated_samples.tsv ancientmetagenome-hostassociated_samples_schema.json
+amdirt validate -s -d ancientmetagenome-hostassociated_samples.tsv ancientmetagenome-hostassociated_samples_schema.json
 ```
 
 If the table is valid you will get a corresponding message as follows:
 
 ```bash
-2022-12-16 11:15:41.109 INFO    AMDirT: ancientmetagenome-hostassociated_samples.tsv is valid
+2022-12-16 11:15:41.109 INFO    amdirt: ancientmetagenome-hostassociated_samples.tsv is valid
 ```
 
 If the table is invalid, you will get a table containing a list of the found errors:
 
 ```text
-           AMDirT Validation Report of ancientmetagenome-hostassociated_samples.tsv against ancientmetagenome-hostassociated_samples_schema.json
+           amdirt Validation Report of ancientmetagenome-hostassociated_samples.tsv against ancientmetagenome-hostassociated_samples_schema.json
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Error                   ┃ Source     ┃ Column      ┃ Row ┃ Message                                                                                       ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩

@@ -1,6 +1,6 @@
 from sys import path
 import os
-from AMDirT.core import (
+from amdirt.core import (
     prepare_accession_table,
     prepare_bibtex_file,
     prepare_eager_table,
@@ -12,10 +12,10 @@ from AMDirT.core import (
     get_remote_resources,
     get_json_path,
 )
-from AMDirT.validate import AMDirValidator
-from AMDirT.validate.exceptions import DatasetValidationError
+from amdirt.validate import AMDirValidator
+from amdirt.validate.exceptions import DatasetValidationError
 from json import load
-from AMDirT.core import logger
+from amdirt.core import logger
 import pandas as pd
 import warnings
 
@@ -38,7 +38,7 @@ def run_convert(
     mag=False,
     verbose=False,
 ):
-    """Run the AMDirT conversion application to input samplesheet tables for different pipelines
+    """Run the amdirt conversion application to input samplesheet tables for different pipelines
 
     Args:
         samples (str): Path to AncientMetagenomeDir filtered samples tsv file

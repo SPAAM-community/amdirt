@@ -1,4 +1,4 @@
-from AMDirT.download import download
+from amdirt.download import download
 
 
 def test_download():

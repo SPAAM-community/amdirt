@@ -8,7 +8,7 @@ It is a partial command-line equivalent to the `viewer` graphical user interface
 
 ## When
 
-You typically will use `convert` if you are a command-line power user, and have already performed table filtering and sample selection programmatically (e.g. in R or python), rather than using the AMDirT `viewer` graphical-user-interface.
+You typically will use `convert` if you are a command-line power user, and have already performed table filtering and sample selection programmatically (e.g. in R or python), rather than using the amdirt `viewer` graphical-user-interface.
 
 ## How
 
@@ -16,11 +16,11 @@ The following description assumes that you have already have an AncientMetagenom
 
 > ⚠️ _The header, and present columns etc. should match exactly that on AncientMetagenomeDir, only rows may be removed._
 
-To generate sample sheets of the support pipelines: open a terminal (activating software environments if necessary, see [AMDirT Installation Page](https://github.com/SPAAM-community/AMDirT/)), and there you can run the following command (an example being a filtered `ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv` table):
+To generate sample sheets of the support pipelines: open a terminal (activating software environments if necessary, see [amdirt Installation Page](https://github.com/SPAAM-community/amdirt/)), and there you can run the following command (an example being a filtered `ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv` table):
 
 ```bash
 mkdir samplesheets/
-AMDirT convert ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv ancientmetagenome-hostassociated -o samplesheets/ --<tool>
+amdirt convert ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv ancientmetagenome-hostassociated -o samplesheets/ --<tool>
 ```
 
 where you provide the filtered TSV, which AncientMetagenomeDir samples table the filtered table is derived from,then the output directory where the samplesheets should be saved into, and which tool to generate a samplesheet from.
@@ -32,7 +32,7 @@ Alternatively, if you only want specific libraries, and already have pre-filtere
 
 ```bash
 mkdir -p samplesheets/
-AMDirT convert --libraries ancientmetagenome-hostassociated_libraries_warinnerlibrariesonly.tsv ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv ancientmetagenome-hostassociated -o samplesheets/ --<tool>
+amdirt convert --libraries ancientmetagenome-hostassociated_libraries_warinnerlibrariesonly.tsv ancientmetagenome-hostassociated_samples_warinnersamplesonly.tsv ancientmetagenome-hostassociated -o samplesheets/ --<tool>
 ```
 
 See [Output](#output) for descriptions of all output files.

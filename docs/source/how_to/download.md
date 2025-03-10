@@ -13,7 +13,7 @@ You typically do this if you're planning to use the `convert` command later.
 ## How
 
 ```bash
-AMDirT download --table ancientsinglegenome-hostassociated --table_type samples -r v23.12.0 -o .
+amdirt download --table ancientsinglegenome-hostassociated --table_type samples -r v23.12.0 -o .
 ```
 
 ## Output
