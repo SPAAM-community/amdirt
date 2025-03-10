@@ -126,7 +126,7 @@ class DatasetValidator:
             
             if config.settings.local_json_schema:
                 remote_ref_path = "https://spaam-community.github.io/AncientMetagenomeDir/assets/enums/"
-                local_ref_path = os.path.abspath(config.settings.local_json_schema) + "/"
+                local_ref_path = "file://" + os.path.abspath(config.settings.local_json_schema) + "/"
                 
                 for key in json_schema["items"]["properties"]:
                     if "$ref" in json_schema["items"]["properties"][key]:
