@@ -252,7 +252,7 @@ def prepare_eager_table(
     """
 
     ## Reduce risk of filename incompatible characters in sample names
-    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").replace("/", "_")
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     libraries["Colour_Chemistry"] = libraries["instrument_model"].apply(
         get_colour_chemistry
@@ -313,7 +313,7 @@ def prepare_mag_table(
     """
 
     ## Reduce risk of filename incompatible characters in sample names
-    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").replace("/", "_")
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     # Create a DataFrame for "SINGLE" values
     single_libraries = libraries[libraries["library_layout"] == "SINGLE"]
@@ -414,7 +414,7 @@ def prepare_taxprofiler_table(
     """
 
     ## Reduce risk of filename incompatible characters in sample names
-    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").replace("/", "_")
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     libraries["fastq_1"] = libraries["download_links"].apply(
         get_filename, orientation="fwd"
@@ -488,7 +488,7 @@ def prepare_aMeta_table(
     """
 
     ## Reduce risk of filename incompatible characters in sample names
-    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").replace("/", "_")
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     libraries["Colour_Chemistry"] = libraries["instrument_model"].apply(
         get_colour_chemistry
