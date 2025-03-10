@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import amdirt.configuration.configuration as config
 from amdirt.validate import exceptions
 from amdirt.core import logger
 from io import StringIO
@@ -11,6 +12,7 @@ from jsonschema import Draft7Validator, exceptions as json_exceptions
 from typing import AnyStr, BinaryIO, TextIO, Union
 import requests
 import re
+import os
 
 Schema = Union[AnyStr, BinaryIO, TextIO]
 Dataset = Union[AnyStr, BinaryIO, TextIO]
@@ -113,13 +115,26 @@ class DatasetValidator:
         try:
             if str(schema).startswith("http"):
                 res = requests.get(schema)
+                json_schema = {}
                 if res.status_code == 200:
-                    return res.json()
+                    json_schema = res.json()
                 else:
                     raise Exception("Could not fetch schema from URL")
             else:
                 with open(schema, "r") as s:
-                    return json.load(s)
+                    json_schema = json.load(s)
+            
+            if config.settings.local_json_schema:
+                remote_ref_path = "https://spaam-community.github.io/AncientMetagenomeDir/assets/enums/"
+                local_ref_path = "file://" + os.path.abspath(config.settings.local_json_schema) + "/"
+                
+                for key in json_schema["items"]["properties"]:
+                    if "$ref" in json_schema["items"]["properties"][key]:
+                        val = json_schema["items"]["properties"][key]["$ref"] 
+                        val = val.replace(remote_ref_path, local_ref_path)
+                        json_schema["items"]["properties"][key]["$ref"] = val
+                        
+            return json_schema
         except json.JSONDecodeError as e:
             msg = str(e.with_traceback(e.__traceback__))
             self.add_error(
