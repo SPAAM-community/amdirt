@@ -13,11 +13,15 @@ class AMDirValidator(DatasetValidator):
     """Validator Class for AncientMetagenomeDir datasets"""
 
     def check_duplicate_dois(self) -> bool:
+        if "publication_doi" in self.dataset:
+            doi_col = "publication_doi"
+        else:
+            doi_col = "data_publication_doi"
         project_dois = self.dataset.groupby("project_name")[
-            "publication_doi"
+            doi_col
         ].unique()
         doi_unique = self.dataset.groupby("project_name")[
-            "publication_doi"
+            doi_col
         ].nunique()
         err_cnt = 0
         for project in doi_unique.index:
