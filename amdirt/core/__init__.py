@@ -488,7 +488,7 @@ def prepare_aMeta_table(
     """
 
     ## Reduce risk of filename incompatible characters in sample names
-    libraries["sample_name"] = libraries["sample_name"].replace(" ", "_").replace("/", "_")
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").replace("/", "_")
 
     libraries["Colour_Chemistry"] = libraries["instrument_model"].apply(
         get_colour_chemistry
