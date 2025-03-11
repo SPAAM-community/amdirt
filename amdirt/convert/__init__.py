@@ -204,7 +204,7 @@ def run_convert(
         )
         taxprofiler_table.to_csv(
             tbl_file,
-            header=False,
+            header=True,
             index=False,
         )
 

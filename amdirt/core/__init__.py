@@ -251,6 +251,9 @@ def prepare_eager_table(
         supported_archives (list): list of supported archives
     """
 
+    ## Reduce risk of filename incompatible characters in sample names
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
+
     libraries["Colour_Chemistry"] = libraries["instrument_model"].apply(
         get_colour_chemistry
     )
@@ -308,6 +311,9 @@ def prepare_mag_table(
         table_name (str): Name of the table
         supported_archives (list): list of supported archives
     """
+
+    ## Reduce risk of filename incompatible characters in sample names
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     # Create a DataFrame for "SINGLE" values
     single_libraries = libraries[libraries["library_layout"] == "SINGLE"]
@@ -407,6 +413,9 @@ def prepare_taxprofiler_table(
         supported_archives (list): list of supported archives
     """
 
+    ## Reduce risk of filename incompatible characters in sample names
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
+
     libraries["fastq_1"] = libraries["download_links"].apply(
         get_filename, orientation="fwd"
     )
@@ -477,6 +486,9 @@ def prepare_aMeta_table(
         table_name (str): Name of the table
         supported_archives (list): list of supported archives
     """
+
+    ## Reduce risk of filename incompatible characters in sample names
+    libraries["sample_name"] = libraries["sample_name"].str.replace(" ", "_").str.replace("/", "_")
 
     libraries["Colour_Chemistry"] = libraries["instrument_model"].apply(
         get_colour_chemistry
