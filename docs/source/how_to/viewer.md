@@ -12,6 +12,8 @@ The purpose of the `viewer` command is to provide a easy-to-use graphical-user i
 
 > ⚠️ _The `viewer` tool was previously named `filter`, and might still be referred as such in some parts of the documentation._
 
+> ⚠️ _The `viewer` tool only works for samples and libraries that have the sequencing data stored on either SRA or ENA. It does not work for FastA files uploaded to GenBank or GitHub._
+
 For video based walkthroughs please see [Tutorials](/tutorials/viewer.md).
 
 ## When
