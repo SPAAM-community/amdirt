@@ -34,7 +34,7 @@ setup(
         "jsonschema",
         "rich",
         "streamlit<=1.35.0",
-        "streamlit-aggrid",
+        "streamlit-aggrid==0.3.4.post3",
         "numpy",
         "requests",
         "colorlog"
