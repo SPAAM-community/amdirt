@@ -9,10 +9,10 @@ setuptools
 sphinx
 sphinx-click
 sphinx_rtd_theme
-streamlit
+streamlit==1.35.0
 watchdog
 xmltodict
 python-dotenv
 simplejson
-streamlit-aggrid
+streamlit-aggrid==0.3.4.post3
 colorlog
