@@ -131,7 +131,7 @@ def run_convert(
         bibfile = f"{output}/AncientMetagenomeDir_bibliography.bib"
         logger.info(f"Writing Bibtex citation file to {bibfile}")
         with open(bibfile, "w") as fw:
-            fw.write(prepare_bibtex_file(samples))
+            fw.write(prepare_bibtex_file(libraries))
 
     if table_name in ["ancientmetagenome-environmental"]:
         col_drop = ["archive_accession"]

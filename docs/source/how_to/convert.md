@@ -59,7 +59,7 @@ All possible output is as follows:
 
 - `<outdir>`: where all the pipeline samplesheets are placed (by default `.`)
 - `AncientMetagenomeDir_bibliography.bib`:
-  - A BibTex format citation information file with all references (where available) present in the filtered sample table.
+  - A BibTex format citation information file with all references (where available) present in the filtered sample table. In case a library table is provided using `--libraries`, only the references relevant to the selected libraries are reported.
 - `AncientMetagenomeDir_filtered_libraries.tsv`:
   - The associated AncientMetagenomeDir curated metadata for all _libraries_ of the samples in the input table.
 - `AncientMetagenomeDir_curl_download_script.sh`:

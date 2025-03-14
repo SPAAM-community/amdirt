@@ -519,10 +519,10 @@ def prepare_aMeta_table(
 
 
 @st.cache_data
-def prepare_bibtex_file(samples: pd.DataFrame) -> str:
+def prepare_bibtex_file(libraries: pd.DataFrame) -> str:
     dois = set()
     failed_dois = set()
-    dois_set = set(list(samples["publication_doi"]))
+    dois_set = set(list(libraries["data_publication_doi"]))
     dois_set.add("10.1038/s41597-021-00816-y")
     for doi in dois_set:
         try:
