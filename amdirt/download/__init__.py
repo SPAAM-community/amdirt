@@ -55,8 +55,13 @@ def download(table: str, table_type: str, release: str, output: str = ".") -> st
     logger.info(
         f"Downloading {table} {table_type} table from {release} release, saving to {output}/{table_filename}"
     )
-    t = requests.get(resources[table_type][table].replace("master", release))
-    with open(table_filename, "w") as fh:
-        fh.write(t.text)
+    try:
+        t = requests.get(resources[table_type][table].replace("master", release))
+        with open(f"{output}/{table_filename}", "w") as fh:
+            fh.write(t.text)
+    except KeyError:
+        logger.warning(
+            f"Invalid table: {table}. {table} currently does not have any {table_type} information."
+        )
 
     return table_filename
