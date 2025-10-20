@@ -320,7 +320,7 @@ def merge(ctx, no_args_is_help=True, **kwargs):
     "-y",
     "--table_type",
     help="Type of table to download",
-    type=click.Choice(["samples", "libraries"]),
+    type=click.Choice(["samples", "libraries", "dates"]),
     default="samples",
     show_default=True,
 )
