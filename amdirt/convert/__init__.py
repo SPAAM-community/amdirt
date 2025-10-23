@@ -8,6 +8,7 @@ from amdirt.core import (
     prepare_aMeta_table,
     is_merge_size_zero,
     prepare_taxprofiler_table,
+    get_dates,
     get_libraries,
     get_remote_resources,
     get_json_path,
@@ -27,6 +28,7 @@ def run_convert(
     tables=None,
     output=".",
     bibliography=False,
+    dates=False,
     librarymetadata=False,
     curl=False,
     aspera=False,
@@ -137,6 +139,22 @@ def run_convert(
         col_drop = ["archive_accession"]
     else:
         col_drop = ["archive_accession", "sample_host"]
+
+    if dates == True:
+        if table_name not in remote_resources["dates"]:
+            logger.error(f"No dates for {table_name} available in AncientMetagenomeDir at the moment.")
+        else:
+            tbl_file = f"{output}/AncientMetagenomeDir_filtered_dates.tsv"
+            dates_tbl = pd.read_csv(remote_resources['dates'][table_name],
+                                    sep="\t")
+            logger.info(f"Writing filtered dates table to {tbl_file}")
+            datesmetadata = get_dates(table_name, samples, dates_tbl)
+            datesmetadata.to_csv(
+                tbl_file,
+                sep="\t",
+                index=False,
+            )
+
 
     if librarymetadata == True:
         tbl_file = f"{output}/AncientMetagenomeDir_filtered_libraries.tsv"
