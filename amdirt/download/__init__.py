@@ -16,7 +16,7 @@ def download(table: str, table_type: str, release: str, output: str = ".") -> st
     table : str
         The AncientMetagenomeDir table to download.
     table_type : str
-        The type of table to download. Allowed values are ['samples', 'libraries'].
+        The type of table to download. Allowed values are ['samples', 'libraries', 'dates'].
     release : str
         The release of the table to download. Must be a valid release tag.
     output: str
@@ -47,16 +47,21 @@ def download(table: str, table_type: str, release: str, output: str = ".") -> st
     if check_allowed_values(tables, table) is False:
         raise ValueError(f"Invalid table: {table}. Allowed values are {tables}")
 
-    if check_allowed_values(["samples", "libraries"], table_type) is False:
+    if check_allowed_values(["samples", "libraries", "dates"], table_type) is False:
         raise ValueError(
-            f"Invalid table type: {table_type}. Allowed values are ['samples', 'libraries']"
+            f"Invalid table type: {table_type}. Allowed values are ['samples', 'libraries', 'dates']"
         )
     table_filename = f"{table}_{table_type}_{release}.tsv"
     logger.info(
         f"Downloading {table} {table_type} table from {release} release, saving to {output}/{table_filename}"
     )
-    t = requests.get(resources[table_type][table].replace("master", release))
-    with open(table_filename, "w") as fh:
-        fh.write(t.text)
+    try:
+        t = requests.get(resources[table_type][table].replace("master", release))
+        with open(f"{output}/{table_filename}", "w") as fh:
+            fh.write(t.text)
+    except KeyError:
+        logger.warning(
+            f"Invalid table: {table}. {table} currently does not have any {table_type} information."
+        )
 
     return table_filename

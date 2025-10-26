@@ -170,6 +170,11 @@ def viewer(ctx, no_args_is_help=True, **kwargs):
     help="Generate BibTeX file of all publications in input table",
 )
 @click.option(
+    "--dates",
+    is_flag=True,
+    help="Generate AncientMetagenomeDir dates table of all samples in input table"
+)
+@click.option(
     "--curl",
     is_flag=True,
     help="Generate bash script with curl-based download commands for all libraries of samples in input table",
@@ -320,7 +325,7 @@ def merge(ctx, no_args_is_help=True, **kwargs):
     "-y",
     "--table_type",
     help="Type of table to download",
-    type=click.Choice(["samples", "libraries"]),
+    type=click.Choice(["samples", "libraries", "dates"]),
     default="samples",
     show_default=True,
 )

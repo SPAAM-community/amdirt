@@ -22,5 +22,11 @@
     "ancientmetagenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientmetagenome-hostassociated/libraries/ancientmetagenome-hostassociated_libraries_schema.json",
     "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/libraries/ancientsinglegenome-hostassociated_libraries_schema.json",
     "test": "https://raw.githubusercontent.com/SPAAM-community/amdirt/dev/tests/data/libraries_schema.json"
+  },
+  "dates": {
+    "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/dates/ancientsinglegenome-hostassociated_dates.tsv"
+  },
+  "dates_schema": {
+    "ancientsinglegenome-hostassociated": "https://raw.githubusercontent.com/SPAAM-community/AncientMetagenomeDir/master/ancientsinglegenome-hostassociated/dates/ancientsinglegenome-hostassociated_dates_schema.json"
   }
 }

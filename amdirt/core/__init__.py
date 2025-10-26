@@ -141,6 +141,40 @@ def doi2bib(doi: str) -> str:
     return r.text
 
 
+def get_dates(
+    table_name: str,
+    samples: pd.DataFrame,
+    dates: pd.DataFrame
+):
+    """Get dates from the samples table
+
+    Args:
+        table_name (str): Name of the table of the table to convert
+        samples (pd.DataFrame): Sample table
+
+    Returns:
+        pd.DataFrame: filtered dates table
+    """
+    samples = (samples
+        .rename({'archive_accession': 'archive_sample_accession'}, axis=1)
+    )
+    if table_name in [
+        "ancientmetagenome-environmental",
+    ]:
+        sel_col = ["archive_accession"]
+    else:
+        sel_col = ["project_name", "publication_year",
+                   "sample_name", "singlegenome_species",
+                   "archive_project", "archive_sample_accession"]
+    selected_dates = dates.merge(
+        samples.loc[:, sel_col],
+        on=sel_col,
+        how="inner"
+    )
+
+    return selected_dates
+
+
 @st.cache_data
 def get_libraries(
     table_name: str,
