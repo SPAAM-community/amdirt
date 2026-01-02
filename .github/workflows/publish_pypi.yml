@@ -1,8 +1,9 @@
 name: publish-pypi
 
 on:
-  release:
-    types: [published, edited]
+  workflow_dispatch:
+  # release:
+  #   types: [published, edited]
 
 jobs:
   build-and-publish:
