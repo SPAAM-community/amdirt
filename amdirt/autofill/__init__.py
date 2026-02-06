@@ -4,7 +4,6 @@ from amdirt.core.ena import ENAPortalAPI
 from amdirt.validate.exceptions import NetworkError
 import json
 
-import sys
 import pandas as pd
 
 def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_output=None, library_output=None, verbose=False, output_ena_table=None):
@@ -54,6 +53,7 @@ def run_autofill(accession, table_name=None, schema=None, dataset=None, sample_o
         raise NetworkError("ENA API is unreachable")
     
     query_dict = list()
+    accession = [aa for a in accession for aa in a.split(",")]
     for a in accession:
         query_res = ena.query(a, fields=[
             "experiment_accession",
