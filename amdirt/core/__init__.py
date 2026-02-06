@@ -252,13 +252,17 @@ def parse_to_mag(libraries):
         get_filename, orientation="rev"
     )
     libraries["short_reads_2"] = libraries["short_reads_2"].replace("NA", "")
+    libraries["short_reads_platform"] = libraries["instrument_model"].apply(get_sequencing_platform)
     libraries["longs_reads"] = ""
+    libraries["long_reads_platform"] = ""
     col2keep = [
         "archive_data_accession",
         "archive_sample_accession",
         "short_reads_1",
         "short_reads_2",
         "longs_reads",
+        "short_reads_platform",
+        "long_reads_platform",
     ]
     libraries = libraries[col2keep].rename(
         columns={
@@ -624,3 +628,30 @@ def is_merge_size_zero(
     if samples.shape[0] != 0 and library_selected.shape[0] == 0:
         return True
     return False
+
+
+def get_sequencing_platform(instrument_model: str) -> str:
+    """
+    Infer sequencing platform from the instrument model.
+
+    Args:
+        instrument_model (str): instrument model reported on ENA
+    Returns:
+        str: sequencing platform
+    """
+    if (instrument_model.startswith("Illumina") or
+            instrument_model.startswith("HiSeq") or
+            instrument_model.startswith("NextSeq")):
+        return "ILLUMINA"
+    elif instrument_model.startswith("454"):
+        return "454"
+    elif instrument_model.startswith("AB"):
+        return "AB"
+    elif instrument_model.startswith("BGISEQ"):
+        return "BGISEQ"
+    elif instrument_model == "Complete Genomics":
+        return instrument_model
+    elif instrument_model.startswith("Helicos"):
+        return "Helicos"
+    else:
+        return "Unknown"
