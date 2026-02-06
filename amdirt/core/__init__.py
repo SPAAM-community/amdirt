@@ -233,8 +233,12 @@ def get_filename(path_string: str, orientation: str) -> Tuple[str, str]:
     """
 
     if ";" in path_string:
-        fwd = Path(path_string.split(";")[0]).name
-        rev = Path(path_string.split(";")[1]).name
+        if path_string.count(";") == 1:
+            fwd = Path(path_string.split(";")[0]).name
+            rev = Path(path_string.split(";")[1]).name
+        else:  # three files per sample
+            fwd = Path(path_string.split(";")[1]).name
+            rev = Path(path_string.split(";")[2]).name
     else:
         fwd = Path(path_string).name
         rev = "NA"
