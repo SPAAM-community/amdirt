@@ -210,13 +210,20 @@ def get_libraries(
         sel_col = ["archive_accession"]
     else:
         sel_col = ["archive_accession", "sample_host"]
-    libraries = libraries.merge(
+    libraries_subset = libraries.merge(
         stacked_samples[sel_col],
         left_on="archive_sample_accession",
         right_on="archive_accession",
     )
     select_libs = list(stacked_samples["archive_accession"])
-    selected_libraries = libraries.query("archive_sample_accession in @select_libs")
+    if libraries_subset.shape[0] == 0:
+        libraries_subset = libraries.merge(
+            samples[sel_col],
+            left_on="archive_sample_accession",
+            right_on="archive_accession",
+        )
+        select_libs = list(samples["archive_accession"])
+    selected_libraries = libraries_subset.query("archive_sample_accession in @select_libs")
 
     return selected_libraries
 
@@ -628,6 +635,12 @@ def is_merge_size_zero(
         left_on="archive_sample_accession",
         right_on="archive_accession",
     )
+    if library_selected.shape[0] == 0:
+        library_selected = library.merge(
+            samples[sel_col],
+            left_on="archive_sample_accession",
+            right_on="archive_accession",
+        )
 
     if samples.shape[0] != 0 and library_selected.shape[0] == 0:
         return True
